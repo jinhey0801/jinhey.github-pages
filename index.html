@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>칭호 색상 코드 생성 · 변환 미리보기 · 제작:jinhey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <h1>칭호 색상 코드 생성 · 변환 미리보기 · 제작:jinhey</h1>
+
+    <div class="card row between">
+      <div class="row">
+        <label class="mono">배경색</label>
+        <input id="bg" type="color" value="#f7f7f7" title="배경색 선택">
+      </div>
+      <div class="small mono">예: |cffFFC0CB진|r|cffE89AD8헤|r|cffBA55D3이|r</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">입력 텍스트</div>
+      <textarea id="textInput" placeholder="여기에 텍스트를 입력하세요 (예: 진헤이)">진헤이</textarea>
+
+      <div class="grid">
+        <div class="col">
+          <div class="section-title">색상 모드</div>
+          <div class="row">
+            <label>모드</label>
+            <select id="mode">
+              <option value="perChar" selected>문자별 그라데이션</option>
+              <option value="single">단색(시작색 사용)</option>
+              <option value="perCharCustom">문자별 직접 지정</option>
+              <option value="presetNSteps">N단계 프리셋</option>
+            </select>
+          </div>
+
+          <div id="gradBox">
+            <div class="section-title">그라데이션 (시작→끝)</div>
+            <div class="row">
+              <label>시작</label>
+              <input id="startColor" type="color" value="#FFC0CB">
+              <input id="startHex" class="hex mono" value="#FFC0CB">
+            </div>
+            <div class="row">
+              <label>끝</label>
+              <input id="endColor" type="color" value="#BA55D3">
+              <input id="endHex" class="hex mono" value="#BA55D3">
+            </div>
+            <button id="applyBtn">코드 생성</button>
+          </div>
+
+          <div id="customBox" style="display:none">
+            <div class="section-title">문자별 직접 지정</div>
+            <div class="tools-row">
+              <button id="randomizeBtn">랜덤 색</button>
+              <button id="genFromCustomBtn">문자별 코드 생성</button>
+            </div>
+            <div id="charColors" class="char-grid" aria-live="polite"></div>
+          </div>
+
+          <div id="presetBox" style="display:none">
+            <div class="section-title">N단계 프리셋</div>
+            <div class="row">
+              <label>프리셋</label>
+              <select id="presetSelect"></select>
+            </div>
+            <div class="row">
+              <label>단계 N</label>
+              <input id="presetSteps" type="number" value="6" min="2" max="30" style="width:90px">
+            </div>
+            <button id="genPresetBtn">프리셋으로 코드 생성</button>
+            <div id="presetPreview" class="row" style="margin-top:8px;flex-wrap:wrap;"></div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="section-title">단색 빠른 생성</div>
+          <div class="row">
+            <label>색상</label>
+            <input id="quickColor" type="color" value="#FF66CC">
+            <input id="quickHex" class="hex mono" value="#FF66CC">
+          </div>
+          <button id="quickBtn">단색 코드 생성</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">결과 칭호 코드(|cff…|r)</div>
+      <textarea id="wowOutput" class="mono" placeholder="여기에 생성된 |cff…|r 코드가 표시됩니다" readonly></textarea>
+      <div class="row">
+        <button id="copyBtn">코드 복사</button>
+        <span id="copyMsg" class="small" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">HTML 렌더 미리보기</div>
+      <div id="renderOut" class="render"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">역변환 (|cff…|r → HTML)</div>
+      <textarea id="wowInput" class="mono" placeholder="여기에 |cff…|r 코드를 붙여넣으면 아래에 렌더됩니다"></textarea>
+      <div id="renderBack" class="render"></div>
+    </div>
+
+    <footer class="footer small mono">
+      제작자 : jinhey · 문의 : jinhey
+    </footer>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

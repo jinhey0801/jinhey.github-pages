@@ -1,0 +1,95 @@
+ :root { --bg: #f7f7f7; }
+html, body { height: 100%; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 24px;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR",
+               "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: #111; line-height: 1.6;
+}
+.wrap { max-width: 1000px; margin: 0 auto; }
+h1 { font-size: 20px; margin: 0 0 12px; }
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.06);
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0,0,0,.06);
+}
+
+.section-title { font-weight: 700; margin-bottom: 8px; }
+
+textarea {
+  width: 100%; min-height: 96px; resize: vertical;
+  padding: 12px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Noto Sans Mono", monospace;
+  background: #fafafa;
+}
+
+.render {
+  padding: 16px; border-radius: 12px; background: #fafafa;
+  min-height: 64px; font-size: 28px; font-weight: 700; word-break: break-word;
+}
+
+.small { font-size: 12px; opacity: .8 }
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.row.between { justify-content: space-between; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.col { display: flex; flex-direction: column; gap: 8px; }
+
+input[type=color] {
+  width: 44px; height: 34px; padding: 0;
+  border: 1px solid #ddd; border-radius: 8px; background: transparent;
+  cursor: pointer;
+}
+label { font-size: 14px; min-width: 44px; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+.hex {
+  width: 110px; height: 34px; padding: 6px 10px;
+  border-radius: 8px; border: 1px solid #ddd; background: #fff;
+}
+button {
+  height: 36px; padding: 0 12px; border: 1px solid #ddd; border-radius: 10px;
+  background: #111; color: #fff; font-weight: 600; cursor: pointer;
+}
+button:hover { opacity: .92; }
+#copyMsg { min-height: 1em; }
+
+/* 문자별 에디터 */
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.char-card {
+  border: 1px solid #eee; border-radius: 12px; padding: 10px;
+  display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;
+  background: #fafafa;
+}
+.char-symbol {
+  font-weight: 700; font-size: 18px; padding: 4px 8px; border-radius: 8px; background: #fff; border: 1px solid #eee;
+  min-width: 36px; text-align: center;
+}
+.char-hex { width: 100%; }
+.tools-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* 프리셋 미리보기 */
+.preset-swatch {
+  width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(0,0,0,.08);
+}
+.footer {
+  text-align: center;
+  padding: 12px 0;
+  color: #555;
+}
